@@ -1,0 +1,7 @@
+releases:
+  - name: webapp
+    chart: ./charts/webapp
+    version: 0.1.0
+    values:
+      - environments/{{ .Environment.Name }}.yaml
+    namespace: default

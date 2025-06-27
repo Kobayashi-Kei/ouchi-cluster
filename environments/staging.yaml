@@ -1,0 +1,23 @@
+environment:
+  name: staging
+  values:
+    replicaCount: 2
+    image:
+      repository: your-repo/webapp
+      tag: "staging"
+    service:
+      type: ClusterIP
+      port: 80
+    ingress:
+      enabled: true
+      hosts:
+        - host: staging.yourdomain.com
+          paths:
+            - /
+    resources:
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+      requests:
+        cpu: "250m"
+        memory: "256Mi"
