@@ -5,3 +5,9 @@ releases:
     values:
       - environments/{{ .Environment.Name }}.yaml
     namespace: default
+  - name: container-registry
+    chart: ./charts/container-registry
+    version: 0.1.0
+    values:
+      - environments/{{ .Environment.Name }}.yaml
+    namespace: default

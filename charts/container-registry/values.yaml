@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: registry
+  tag: 2.8.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 443
+
+persistence:
+  enabled: true
+  size: 10Gi
+
+ingress:
+  enabled: true
+  host: registry.local
+  tlsSecretName: container-registry-tls
+
+resources: {}

@@ -12,6 +12,14 @@
 - `helmfile.yaml`: Helmfile の設定を定義します。
 - `environments/production.yaml`: 本番環境用の設定を定義します。
 - `environments/staging.yaml`: ステージング環境用の設定を定義します。
+- `charts/container-registry/Chart.yaml`: プライベート Docker レジストリ用 Helm チャートのメタデータ。
+- `charts/container-registry/values.yaml`: レジストリ用のデフォルト値。
+- `charts/container-registry/templates/registry-deployment.yaml`: レジストリ用 Deployment リソース。
+- `charts/container-registry/templates/registry-service.yaml`: レジストリ用 Service リソース。
+- `charts/container-registry/templates/registry-ingress.yaml`: レジストリ用 Ingress リソース。
+- `charts/container-registry/templates/registry-pvc.yaml`: レジストリ用永続ボリュームクレーム。
+
+※ registry 構築の参考: https://qiita.com/zknzfz/items/13d5d07ab5bb0feb1fd1
 
 ## セットアップ手順
 
@@ -19,9 +27,9 @@
    Helm と Helmfile をインストールしてください。
 
 2. **チャートのデプロイ**:
-   以下のコマンドを使用して、Helmfile を使用してチャートをデプロイします。
+   以下のコマンドを使用して、Helmfile を使用してチャート（webapp と container-registry 両方）をデプロイします。
 
-   ```
+   ```zsh
    helmfile apply
    ```
 
@@ -29,7 +37,13 @@
    `environments/production.yaml`または`environments/staging.yaml`を編集して、必要な設定を行います。
 
 4. **アプリケーションへのアクセス**:
-   デプロイ後、Ingress リソースを使用してアプリケーションにアクセスできます。
+   デプロイ後、webapp 用・container-registry 用の Ingress リソースを使用してアプリケーションやレジストリにアクセスできます。
+
+## container-registry チャートの注意事項
+
+- TLS 証明書（Secret）は事前に作成しておく必要があります。
+- デフォルトの値や host 名は`charts/container-registry/values.yaml`で設定してください。
+- registry の永続データは PVC で保持されます。
 
 ## 注意事項
 
