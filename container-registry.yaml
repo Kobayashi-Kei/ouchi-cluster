@@ -1,0 +1,10 @@
+environments:
+  production: {}
+---
+releases:
+  - name: container-registry
+    chart: ./charts/container-registry
+    version: 0.1.0
+    values:
+      - environments/{{ .Environment.Name }}/container-registry-values.yaml
+    namespace: default

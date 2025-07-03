@@ -1,0 +1,10 @@
+environments:
+  production: {}
+---
+releases:
+  - name: yui-piano-school
+    chart: ./charts/yui-piano-school
+    version: 0.1.0
+    values:
+      - environments/{{ .Environment.Name }}/yui-piano-school-values.yaml
+    namespace: default

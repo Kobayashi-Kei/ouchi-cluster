@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-webapp
+  name: {{ .Release.Name }}-yui-piano-school
   labels:
-    app: {{ .Release.Name }}-webapp
+    app: {{ .Release.Name }}-yui-piano-school
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-webapp
+      app: {{ .Release.Name }}-yui-piano-school
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-webapp
+        app: {{ .Release.Name }}-yui-piano-school
     spec:
       containers:
-        - name: webapp
+        - name: yui-piano-school
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: {{ .Values.service.port }}

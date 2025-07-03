@@ -1,0 +1,15 @@
+nextcloud:
+  host: nextcloud.local
+  username: admin
+  password: admin
+  datadir: /var/www/html/data
+  persistence:
+    enabled: true
+    size: 10Gi
+mariadb:
+  enabled: true
+  db:
+    name: nextcloud
+    user: nextcloud
+    password: nextcloud
+    rootPassword: nextcloud

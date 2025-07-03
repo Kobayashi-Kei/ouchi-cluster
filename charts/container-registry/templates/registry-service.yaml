@@ -5,9 +5,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 443
+    - port: 5000
+      targetPort: 5000
       protocol: TCP
-      name: https
+      name: http
   selector:
     app: {{ .Release.Name }}-registry

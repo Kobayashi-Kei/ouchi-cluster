@@ -1,18 +1,18 @@
 apiVersion: v1
 appVersion: "1.0.0"
 description: A Helm chart for deploying a web application
-name: webapp
+name: yui-piano-school
 version: 0.1.0
 
 replicaCount: 2
 
 image:
-  repository: your-docker-repo/webapp
+  repository: keitakoba/yui-piano-school
   pullPolicy: IfNotPresent
   tag: "latest"
 
 service:
-  name: webapp
+  name: yui-piano-school
   type: ClusterIP
   port: 80
 

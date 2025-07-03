@@ -18,6 +18,12 @@
 - `charts/container-registry/templates/registry-service.yaml`: レジストリ用 Service リソース。
 - `charts/container-registry/templates/registry-ingress.yaml`: レジストリ用 Ingress リソース。
 - `charts/container-registry/templates/registry-pvc.yaml`: レジストリ用永続ボリュームクレーム。
+- `charts/nextcloud/Chart.yaml`: Nextcloud 用 Helm チャートのメタデータ。
+- `charts/nextcloud/values.yaml`: Nextcloud 用のデフォルト値。
+- `charts/nextcloud/templates/deployment.yaml`: Nextcloud 用 Deployment リソース。
+- `charts/nextcloud/templates/service.yaml`: Nextcloud 用 Service リソース。
+- `charts/nextcloud/templates/ingress.yaml`: Nextcloud 用 Ingress リソース。
+- `charts/nextcloud/templates/pvc.yaml`: Nextcloud 用永続ボリュームクレーム。
 
 ※ registry 構築の参考: https://qiita.com/zknzfz/items/13d5d07ab5bb0feb1fd1
 
@@ -27,7 +33,7 @@
    Helm と Helmfile をインストールしてください。
 
 2. **チャートのデプロイ**:
-   以下のコマンドを使用して、Helmfile を使用してチャート（webapp と container-registry 両方）をデプロイします。
+   以下のコマンドを使用して、Helmfile を使用してチャート（webapp, container-registry, nextcloud）をデプロイします。
 
    ```zsh
    helmfile apply
@@ -37,13 +43,18 @@
    `environments/production.yaml`または`environments/staging.yaml`を編集して、必要な設定を行います。
 
 4. **アプリケーションへのアクセス**:
-   デプロイ後、webapp 用・container-registry 用の Ingress リソースを使用してアプリケーションやレジストリにアクセスできます。
+   デプロイ後、webapp・container-registry・nextcloud 用の Ingress リソースを使用して各サービスにアクセスできます。
 
 ## container-registry チャートの注意事項
 
 - TLS 証明書（Secret）は事前に作成しておく必要があります。
 - デフォルトの値や host 名は`charts/container-registry/values.yaml`で設定してください。
 - registry の永続データは PVC で保持されます。
+
+## nextcloud チャートの注意事項
+
+- デフォルトで mariadb が有効になっています。必要に応じて`values.yaml`で設定を調整してください。
+- Nextcloud の公式 Helm チャートの詳細は[公式リポジトリ](https://nextcloud.github.io/helm/)を参照してください。
 
 ## 注意事項
 

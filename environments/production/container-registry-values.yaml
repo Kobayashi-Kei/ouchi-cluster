@@ -7,7 +7,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 443
+  port: 80
 
 persistence:
   enabled: true
@@ -15,7 +15,6 @@ persistence:
 
 ingress:
   enabled: true
-  host: registry.local
-  tlsSecretName: container-registry-tls
+  host: registry.example.com
 
 resources: {}

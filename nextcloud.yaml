@@ -1,0 +1,10 @@
+environments:
+  production: {}
+---
+releases:
+  - name: nextcloud
+    chart: nextcloud/nextcloud
+    version: 4.5.12
+    values:
+      - environments/{{ .Environment.Name }}/nextcloud-values.yaml
+    namespace: default
